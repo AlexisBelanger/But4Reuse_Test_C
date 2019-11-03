@@ -14,5 +14,7 @@ edge create_edge(point p1, point p2);
 
 void print_graph(edge* graph, int size);
 
+int is_neighbour(point p1, point p2, edge* graph, int graph_size);
+
 
 #endif //BUT4REUSE_TEST_C_EDGE_H

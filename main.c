@@ -18,7 +18,6 @@ int main() {
     int i;
     int number_of_points = 10;
     point* point_list = create_point_list(number_of_points);
-    printf("Hello World");
 
     printf("Point list : \n");
     for(i=0; i< number_of_points; i++){
@@ -56,15 +55,32 @@ int main() {
 
     edge* graph;
     graph = (edge*)malloc(sizeof(edge)*number_of_points);
+    int number_of_edges = 0;
     int j;
-    printf("nik");
     for(j=1; j<number_of_points; j++){
-
+        number_of_edges++;
         edge e;
         e = create_edge(point_list[0],point_list[j]);
         graph[j-1] = e;
     }
+    printf("Graph : \n");
     print_graph(graph, number_of_points-1);
+
+    int boolean_neighbour;
+    boolean_neighbour = is_neighbour(point_list[0], point_list[1], graph, number_of_edges);
+    if(boolean_neighbour == 1){
+        printf("The points 0 and 1 are neighbours\n");
+    }else{
+        printf("The points 0 and 1 are NOT neighbours\n");
+    }
+
+    boolean_neighbour = is_neighbour(point_list[3], point_list[1], graph, number_of_edges);
+    if(boolean_neighbour == 1){
+        printf("The points 3 and 1 are neighbours\n");
+    }else{
+        printf("The points 3 and 1 are NOT neighbours\n");
+    }
+
 
 
 
