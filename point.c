@@ -7,6 +7,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 
 
@@ -15,7 +16,7 @@
 point* create_point_list(int number_of_points){
     srand(time(NULL));   // Initialization, should only be called once.
     point* point_list;
-    point_list = (point*)malloc(sizeof(point*)*number_of_points+1);
+    point_list = (point*)malloc(sizeof(point)*number_of_points);
     int i;
     for(i=0; i<number_of_points; i++){
         int rx = rand()%100;
@@ -48,7 +49,7 @@ point setPointColor(point p, char* color){
     int is_real_color = 0;
     int i;
     for(i=0; i<6; i++){
-        if(color == real_colors[i]){
+        if(strcmp(color, real_colors[i])==0){
             is_real_color = 1;
             break;
         }
@@ -58,7 +59,7 @@ point setPointColor(point p, char* color){
         p.color = color;
         return p;
     }else{
-        printf("Wrong color, the color of the point is still the same");
+        printf("Wrong color, the color of the point is still the same\n");
         return p;
     }
 }

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "point.h"
 #include "edge.h"
+
 #include <time.h>
 #include <stdlib.h>
 #include <math.h>
@@ -17,6 +18,8 @@ int main() {
     int i;
     int number_of_points = 10;
     point* point_list = create_point_list(number_of_points);
+    printf("Hello World");
+
     printf("Point list : \n");
     for(i=0; i< number_of_points; i++){
         print_point(point_list[i]);
@@ -32,15 +35,19 @@ int main() {
         float dist = distance(point_list[i], origin);
         printf("Distance between Point %d and the origin : %0.2f \n", point_list[i].name, dist);
         if(dist<30){
-            setPointColor(point_list[i], "green");
+            char* green = "green";
+            setPointColor(point_list[i], green);
         }else{
             if(dist<60){
-                point_list[i] = setPointColor(point_list[i], "yellow");
+                char* yellow = "yellow";
+                point_list[i] = setPointColor(point_list[i], yellow);
             }else{
                 if(dist<90){
-                    point_list[i] = setPointColor(point_list[i], "red");
+                    char* red = "red";
+                    point_list[i] = setPointColor(point_list[i], red);
                 }else{
-                    point_list[i] = setPointColor(point_list[i], "black");
+                    char* black = "black";
+                    point_list[i] = setPointColor(point_list[i], black);
                 }
             }
         }
@@ -48,9 +55,11 @@ int main() {
     }
 
     edge* graph;
-    (edge*)malloc(sizeof(edge*)*number_of_points);
+    graph = (edge*)malloc(sizeof(edge)*number_of_points);
     int j;
+    printf("nik");
     for(j=1; j<number_of_points; j++){
+
         edge e;
         e = create_edge(point_list[0],point_list[j]);
         graph[j-1] = e;
